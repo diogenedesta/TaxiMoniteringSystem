@@ -1,0 +1,74 @@
+﻿@model Taxi_Monitering.tbl_Employee
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_Employee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Emp_First_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Emp_First_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Emp_Last_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Emp_Last_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Emp_Act_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Emp_Act_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Emp_Postion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Emp_Postion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Emp_Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Emp_Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Department.Department_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Department.Department_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_System_Account.Acc_User_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_System_Account.Acc_User_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Emp_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

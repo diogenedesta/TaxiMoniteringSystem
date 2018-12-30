@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Taxi_Monitering.tbl_Zone>
+<link href="~/Content/TaxiTable.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style=" align-content:center">List of Zone</h2>
+
+<p> @Html.ActionLink("Create New", "Create") </p>
+<table >
+    <tr>
+        <th>Name </th>
+        <th>Description</th>
+        <th> Active Date</th>
+        <th>Option</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Zone_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Zone_Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Zone_Act_Date)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Zone_Id }) |
+          
+            @Html.ActionLink("Delete", "Delete", new { id=item.Zone_Id })
+        </td>
+    </tr>
+}
+<tr><td></td></tr>
+</table>
+
+
+
+
+
+
+
+
+

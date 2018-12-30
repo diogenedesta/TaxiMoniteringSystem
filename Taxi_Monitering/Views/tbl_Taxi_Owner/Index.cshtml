@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Taxi_Monitering.tbl_Taxi_Owner>
+
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/TaxiTable.css" rel="stylesheet" />
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            First Name
+        </th>
+        <th>
+            Last Name
+        </th>
+        <th>
+            city
+        </th>
+        <th>
+           Date
+        </th>
+        <th>
+        Gender
+        </th>
+        <th>
+            s.city
+        </th>
+        <th>
+            wereda
+        </th>
+        <th>
+            h.no
+        </th>
+        <th>
+            PIN
+        </th>
+        <th>
+           Driver
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Owr_First_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Owr_Last_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Owr_Reg_city)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Owr_Reg_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Owr_Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Owr_Subcity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Owr_Wereda)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Owr_House_NO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Owr_PIN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_Driver.Driver_First_Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Owr_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Owr_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Owr_Id })
+        </td>
+    </tr>
+}
+
+</table>

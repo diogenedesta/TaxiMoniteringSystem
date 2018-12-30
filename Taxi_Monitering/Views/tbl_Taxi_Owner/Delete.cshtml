@@ -1,0 +1,104 @@
+﻿@model Taxi_Monitering.tbl_Taxi_Owner
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tbl_Taxi_Owner</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Owr_First_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owr_First_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Owr_Last_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owr_Last_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Owr_Reg_city)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owr_Reg_city)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Owr_Reg_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owr_Reg_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Owr_Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owr_Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Owr_Subcity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owr_Subcity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Owr_Wereda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owr_Wereda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Owr_House_NO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owr_House_NO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Owr_PIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owr_PIN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Driver.Driver_First_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Driver.Driver_First_Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

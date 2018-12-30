@@ -1,0 +1,42 @@
+﻿@model Taxi_Monitering.tbl_System_Account
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_System_Account</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Acc_User_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Acc_User_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ACC_Pasword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ACC_Pasword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Role.Role_Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Role.Role_Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Acc_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

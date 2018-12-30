@@ -1,0 +1,861 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AACPTMCSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tbl_Attedance">
+          <Key>
+            <PropertyRef Name="Att_Id" />
+          </Key>
+          <Property Name="Att_Id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Att_Value" Type="int" />
+          <Property Name="Att_tkn_Time" Type="date" />
+          <Property Name="Taxi_ID" Type="nchar" MaxLength="10" />
+          <Property Name="Emp_Id" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbl_Department">
+          <Key>
+            <PropertyRef Name="Department_ID" />
+          </Key>
+          <Property Name="Department_ID" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Department_Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Driver">
+          <Key>
+            <PropertyRef Name="Driver_ID" />
+          </Key>
+          <Property Name="Driver_ID" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Driver_First_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Driver_Last_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Driver_lisence_No" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbl_Employee">
+          <Key>
+            <PropertyRef Name="Emp_Id" />
+          </Key>
+          <Property Name="Emp_Id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Emp_First_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Emp_Last_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Emp_Act_date" Type="date" />
+          <Property Name="Emp_Postion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Department_ID" Type="nchar" MaxLength="10" />
+          <Property Name="Acc_ID" Type="nchar" MaxLength="10" />
+          <Property Name="Emp_Gender" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbl_Role">
+          <Key>
+            <PropertyRef Name="Role_ID" />
+          </Key>
+          <Property Name="Role_ID" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Role_Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="Role_Permission" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Route">
+          <Key>
+            <PropertyRef Name="Route_Id" />
+          </Key>
+          <Property Name="Route_Id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Route_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Route_Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="Route_Start" Type="nvarchar" MaxLength="50" />
+          <Property Name="Route_End" Type="nvarchar" MaxLength="50" />
+          <Property Name="Roue_Total_Distance" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Route_Act_Date" Type="date" />
+          <Property Name="Zone_Id" Type="nchar" MaxLength="10" />
+          <Property Name="Tariff_Id" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbl_System_Account">
+          <Key>
+            <PropertyRef Name="Acc_ID" />
+          </Key>
+          <Property Name="Acc_ID" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Acc_User_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ACC_Pasword" Type="nvarchar" MaxLength="50" />
+          <Property Name="Role_ID" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbl_Tariff">
+          <Key>
+            <PropertyRef Name="Tariff_Id" />
+          </Key>
+          <Property Name="Tariff_Id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Tariff_Amount" Type="float" />
+          <Property Name="Tariff_Update_Date" Type="date" />
+        </EntityType>
+        <EntityType Name="tbl_Taxi">
+          <Key>
+            <PropertyRef Name="Taxi_ID" />
+          </Key>
+          <Property Name="Taxi_ID" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Taxi_Code" Type="char" MaxLength="10" />
+          <Property Name="Taxi_Manf_Year" Type="date" />
+          <Property Name="Taxi_Model" Type="nchar" MaxLength="10" />
+          <Property Name="Taxi_Licence_No" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Zone_Id" Type="nchar" MaxLength="10" />
+          <Property Name="Owr_Id" Type="nchar" MaxLength="10" />
+          <Property Name="Driver_ID" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbl_Taxi_Owner">
+          <Key>
+            <PropertyRef Name="Owr_Id" />
+          </Key>
+          <Property Name="Owr_Id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Owr_First_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Owr_Last_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Owr_Reg_city" Type="nvarchar" MaxLength="50" />
+          <Property Name="Owr_Reg_date" Type="date" />
+          <Property Name="Owr_Gender" Type="nchar" MaxLength="10" />
+          <Property Name="Owr_Subcity" Type="nchar" MaxLength="10" />
+          <Property Name="Owr_Wereda" Type="nchar" MaxLength="10" />
+          <Property Name="Owr_House_NO" Type="nchar" MaxLength="10" />
+          <Property Name="Owr_PIN" Type="nchar" MaxLength="10" />
+          <Property Name="Driver_ID" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbl_Taxi_user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Commnet" Type="nvarchar" MaxLength="50" />
+          <Property Name="Taxi_ID" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbl_Zone">
+          <Key>
+            <PropertyRef Name="Zone_Id" />
+          </Key>
+          <Property Name="Zone_Id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Zone_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Zone_Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="Zone_Act_Date" Type="date" />
+        </EntityType>
+        <Association Name="FK_tbl_Attedance_tbl_Employee">
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="0..1" />
+          <End Role="tbl_Attedance" Type="Self.tbl_Attedance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Employee">
+              <PropertyRef Name="Emp_Id" />
+            </Principal>
+            <Dependent Role="tbl_Attedance">
+              <PropertyRef Name="Emp_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Attedance_tbl_Taxi">
+          <End Role="tbl_Taxi" Type="Self.tbl_Taxi" Multiplicity="0..1" />
+          <End Role="tbl_Attedance" Type="Self.tbl_Attedance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Taxi">
+              <PropertyRef Name="Taxi_ID" />
+            </Principal>
+            <Dependent Role="tbl_Attedance">
+              <PropertyRef Name="Taxi_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Employee_tbl_Department">
+          <End Role="tbl_Department" Type="Self.tbl_Department" Multiplicity="0..1" />
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Department">
+              <PropertyRef Name="Department_ID" />
+            </Principal>
+            <Dependent Role="tbl_Employee">
+              <PropertyRef Name="Department_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Employee_tbl_System_Account">
+          <End Role="tbl_System_Account" Type="Self.tbl_System_Account" Multiplicity="0..1" />
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_System_Account">
+              <PropertyRef Name="Acc_ID" />
+            </Principal>
+            <Dependent Role="tbl_Employee">
+              <PropertyRef Name="Acc_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Route_tbl_Tariff">
+          <End Role="tbl_Tariff" Type="Self.tbl_Tariff" Multiplicity="0..1" />
+          <End Role="tbl_Route" Type="Self.tbl_Route" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Tariff">
+              <PropertyRef Name="Tariff_Id" />
+            </Principal>
+            <Dependent Role="tbl_Route">
+              <PropertyRef Name="Tariff_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Route_tbl_Zone">
+          <End Role="tbl_Zone" Type="Self.tbl_Zone" Multiplicity="0..1" />
+          <End Role="tbl_Route" Type="Self.tbl_Route" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Zone">
+              <PropertyRef Name="Zone_Id" />
+            </Principal>
+            <Dependent Role="tbl_Route">
+              <PropertyRef Name="Zone_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_System_Account_tbl_Role">
+          <End Role="tbl_Role" Type="Self.tbl_Role" Multiplicity="0..1" />
+          <End Role="tbl_System_Account" Type="Self.tbl_System_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Role">
+              <PropertyRef Name="Role_ID" />
+            </Principal>
+            <Dependent Role="tbl_System_Account">
+              <PropertyRef Name="Role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Taxi_Owner_tbl_Driver">
+          <End Role="tbl_Driver" Type="Self.tbl_Driver" Multiplicity="0..1" />
+          <End Role="tbl_Taxi_Owner" Type="Self.tbl_Taxi_Owner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Driver">
+              <PropertyRef Name="Driver_ID" />
+            </Principal>
+            <Dependent Role="tbl_Taxi_Owner">
+              <PropertyRef Name="Driver_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Taxi_tbl_Taxi_Owner">
+          <End Role="tbl_Taxi_Owner" Type="Self.tbl_Taxi_Owner" Multiplicity="0..1" />
+          <End Role="tbl_Taxi" Type="Self.tbl_Taxi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Taxi_Owner">
+              <PropertyRef Name="Owr_Id" />
+            </Principal>
+            <Dependent Role="tbl_Taxi">
+              <PropertyRef Name="Owr_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Taxi_tbl_Zone1">
+          <End Role="tbl_Zone" Type="Self.tbl_Zone" Multiplicity="0..1" />
+          <End Role="tbl_Taxi" Type="Self.tbl_Taxi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Zone">
+              <PropertyRef Name="Zone_Id" />
+            </Principal>
+            <Dependent Role="tbl_Taxi">
+              <PropertyRef Name="Zone_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="HasComment">
+          <End Role="tbl_Taxi" Type="Self.tbl_Taxi" Multiplicity="0..1" />
+          <End Role="tbl_Taxi_user" Type="Self.tbl_Taxi_user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Taxi">
+              <PropertyRef Name="Taxi_ID" />
+            </Principal>
+            <Dependent Role="tbl_Taxi_user">
+              <PropertyRef Name="Taxi_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AACPTMCSModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Attedance" EntityType="Self.tbl_Attedance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Department" EntityType="Self.tbl_Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Driver" EntityType="Self.tbl_Driver" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Employee" EntityType="Self.tbl_Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Role" EntityType="Self.tbl_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Route" EntityType="Self.tbl_Route" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_System_Account" EntityType="Self.tbl_System_Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Tariff" EntityType="Self.tbl_Tariff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Taxi" EntityType="Self.tbl_Taxi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Taxi_Owner" EntityType="Self.tbl_Taxi_Owner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Taxi_user" EntityType="Self.tbl_Taxi_user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Zone" EntityType="Self.tbl_Zone" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbl_Attedance_tbl_Employee" Association="Self.FK_tbl_Attedance_tbl_Employee">
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+            <End Role="tbl_Attedance" EntitySet="tbl_Attedance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Attedance_tbl_Taxi" Association="Self.FK_tbl_Attedance_tbl_Taxi">
+            <End Role="tbl_Taxi" EntitySet="tbl_Taxi" />
+            <End Role="tbl_Attedance" EntitySet="tbl_Attedance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Employee_tbl_Department" Association="Self.FK_tbl_Employee_tbl_Department">
+            <End Role="tbl_Department" EntitySet="tbl_Department" />
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Employee_tbl_System_Account" Association="Self.FK_tbl_Employee_tbl_System_Account">
+            <End Role="tbl_System_Account" EntitySet="tbl_System_Account" />
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Route_tbl_Tariff" Association="Self.FK_tbl_Route_tbl_Tariff">
+            <End Role="tbl_Tariff" EntitySet="tbl_Tariff" />
+            <End Role="tbl_Route" EntitySet="tbl_Route" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Route_tbl_Zone" Association="Self.FK_tbl_Route_tbl_Zone">
+            <End Role="tbl_Zone" EntitySet="tbl_Zone" />
+            <End Role="tbl_Route" EntitySet="tbl_Route" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_System_Account_tbl_Role" Association="Self.FK_tbl_System_Account_tbl_Role">
+            <End Role="tbl_Role" EntitySet="tbl_Role" />
+            <End Role="tbl_System_Account" EntitySet="tbl_System_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Taxi_Owner_tbl_Driver" Association="Self.FK_tbl_Taxi_Owner_tbl_Driver">
+            <End Role="tbl_Driver" EntitySet="tbl_Driver" />
+            <End Role="tbl_Taxi_Owner" EntitySet="tbl_Taxi_Owner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Taxi_tbl_Taxi_Owner" Association="Self.FK_tbl_Taxi_tbl_Taxi_Owner">
+            <End Role="tbl_Taxi_Owner" EntitySet="tbl_Taxi_Owner" />
+            <End Role="tbl_Taxi" EntitySet="tbl_Taxi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Taxi_tbl_Zone1" Association="Self.FK_tbl_Taxi_tbl_Zone1">
+            <End Role="tbl_Zone" EntitySet="tbl_Zone" />
+            <End Role="tbl_Taxi" EntitySet="tbl_Taxi" />
+          </AssociationSet>
+          <AssociationSet Name="HasComment" Association="Self.HasComment">
+            <End Role="tbl_Taxi" EntitySet="tbl_Taxi" />
+            <End Role="tbl_Taxi_user" EntitySet="tbl_Taxi_user" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AACPTMCSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tbl_Attedance">
+          <Key>
+            <PropertyRef Name="Att_Id" />
+          </Key>
+          <Property Name="Att_Id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Att_Value" Type="Int32" />
+          <Property Name="Att_tkn_Time" Type="DateTime" Precision="0" />
+          <Property Name="Taxi_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Emp_Id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="tbl_Employee" Relationship="Self.FK_tbl_Attedance_tbl_Employee" FromRole="tbl_Attedance" ToRole="tbl_Employee" />
+          <NavigationProperty Name="tbl_Taxi" Relationship="Self.FK_tbl_Attedance_tbl_Taxi" FromRole="tbl_Attedance" ToRole="tbl_Taxi" />
+        </EntityType>
+        <EntityType Name="tbl_Department">
+          <Key>
+            <PropertyRef Name="Department_ID" />
+          </Key>
+          <Property Name="Department_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Department_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Employee" Relationship="Self.FK_tbl_Employee_tbl_Department" FromRole="tbl_Department" ToRole="tbl_Employee" />
+        </EntityType>
+        <EntityType Name="tbl_Driver">
+          <Key>
+            <PropertyRef Name="Driver_ID" />
+          </Key>
+          <Property Name="Driver_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Driver_First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Driver_Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Driver_lisence_No" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="tbl_Taxi_Owner" Relationship="Self.FK_tbl_Taxi_Owner_tbl_Driver" FromRole="tbl_Driver" ToRole="tbl_Taxi_Owner" />
+        </EntityType>
+        <EntityType Name="tbl_Employee">
+          <Key>
+            <PropertyRef Name="Emp_Id" />
+          </Key>
+          <Property Name="Emp_Id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Emp_First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Emp_Last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Emp_Act_date" Type="DateTime" Precision="0" />
+          <Property Name="Emp_Postion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Department_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Acc_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Emp_Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="tbl_Attedance" Relationship="Self.FK_tbl_Attedance_tbl_Employee" FromRole="tbl_Employee" ToRole="tbl_Attedance" />
+          <NavigationProperty Name="tbl_Department" Relationship="Self.FK_tbl_Employee_tbl_Department" FromRole="tbl_Employee" ToRole="tbl_Department" />
+          <NavigationProperty Name="tbl_System_Account" Relationship="Self.FK_tbl_Employee_tbl_System_Account" FromRole="tbl_Employee" ToRole="tbl_System_Account" />
+        </EntityType>
+        <EntityType Name="tbl_Role">
+          <Key>
+            <PropertyRef Name="Role_ID" />
+          </Key>
+          <Property Name="Role_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Role_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Role_Permission" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_System_Account" Relationship="Self.FK_tbl_System_Account_tbl_Role" FromRole="tbl_Role" ToRole="tbl_System_Account" />
+        </EntityType>
+        <EntityType Name="tbl_Route">
+          <Key>
+            <PropertyRef Name="Route_Id" />
+          </Key>
+          <Property Name="Route_Id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Route_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Route_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Route_Start" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Route_End" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Roue_Total_Distance" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Route_Act_Date" Type="DateTime" Precision="0" />
+          <Property Name="Zone_Id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Tariff_Id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="tbl_Tariff" Relationship="Self.FK_tbl_Route_tbl_Tariff" FromRole="tbl_Route" ToRole="tbl_Tariff" />
+          <NavigationProperty Name="tbl_Zone" Relationship="Self.FK_tbl_Route_tbl_Zone" FromRole="tbl_Route" ToRole="tbl_Zone" />
+        </EntityType>
+        <EntityType Name="tbl_System_Account">
+          <Key>
+            <PropertyRef Name="Acc_ID" />
+          </Key>
+          <Property Name="Acc_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Acc_User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ACC_Pasword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Role_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="tbl_Employee" Relationship="Self.FK_tbl_Employee_tbl_System_Account" FromRole="tbl_System_Account" ToRole="tbl_Employee" />
+          <NavigationProperty Name="tbl_Role" Relationship="Self.FK_tbl_System_Account_tbl_Role" FromRole="tbl_System_Account" ToRole="tbl_Role" />
+        </EntityType>
+        <EntityType Name="tbl_Tariff">
+          <Key>
+            <PropertyRef Name="Tariff_Id" />
+          </Key>
+          <Property Name="Tariff_Id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Tariff_Amount" Type="Double" />
+          <Property Name="Tariff_Update_Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tbl_Route" Relationship="Self.FK_tbl_Route_tbl_Tariff" FromRole="tbl_Tariff" ToRole="tbl_Route" />
+        </EntityType>
+        <EntityType Name="tbl_Taxi">
+          <Key>
+            <PropertyRef Name="Taxi_ID" />
+          </Key>
+          <Property Name="Taxi_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Taxi_Code" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Taxi_Manf_Year" Type="DateTime" Precision="0" />
+          <Property Name="Taxi_Model" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Taxi_Licence_No" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Zone_Id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Owr_Id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Driver_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="tbl_Attedance" Relationship="Self.FK_tbl_Attedance_tbl_Taxi" FromRole="tbl_Taxi" ToRole="tbl_Attedance" />
+          <NavigationProperty Name="tbl_Taxi_Owner" Relationship="Self.FK_tbl_Taxi_tbl_Taxi_Owner" FromRole="tbl_Taxi" ToRole="tbl_Taxi_Owner" />
+          <NavigationProperty Name="tbl_Zone" Relationship="Self.FK_tbl_Taxi_tbl_Zone1" FromRole="tbl_Taxi" ToRole="tbl_Zone" />
+          <NavigationProperty Name="tbl_Taxi_user" Relationship="Self.HasComment" FromRole="tbl_Taxi" ToRole="tbl_Taxi_user" />
+        </EntityType>
+        <EntityType Name="tbl_Taxi_Owner">
+          <Key>
+            <PropertyRef Name="Owr_Id" />
+          </Key>
+          <Property Name="Owr_Id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Owr_First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Owr_Last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Owr_Reg_city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Owr_Reg_date" Type="DateTime" Precision="0" />
+          <Property Name="Owr_Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Owr_Subcity" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Owr_Wereda" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Owr_House_NO" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Owr_PIN" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Driver_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="tbl_Driver" Relationship="Self.FK_tbl_Taxi_Owner_tbl_Driver" FromRole="tbl_Taxi_Owner" ToRole="tbl_Driver" />
+          <NavigationProperty Name="tbl_Taxi" Relationship="Self.FK_tbl_Taxi_tbl_Taxi_Owner" FromRole="tbl_Taxi_Owner" ToRole="tbl_Taxi" />
+        </EntityType>
+        <EntityType Name="tbl_Taxi_user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Commnet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Taxi_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="tbl_Taxi" Relationship="Self.HasComment" FromRole="tbl_Taxi_user" ToRole="tbl_Taxi" />
+        </EntityType>
+        <EntityType Name="tbl_Zone">
+          <Key>
+            <PropertyRef Name="Zone_Id" />
+          </Key>
+          <Property Name="Zone_Id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Zone_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Zone_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Zone_Act_Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tbl_Route" Relationship="Self.FK_tbl_Route_tbl_Zone" FromRole="tbl_Zone" ToRole="tbl_Route" />
+          <NavigationProperty Name="tbl_Taxi" Relationship="Self.FK_tbl_Taxi_tbl_Zone1" FromRole="tbl_Zone" ToRole="tbl_Taxi" />
+        </EntityType>
+        <Association Name="FK_tbl_Attedance_tbl_Employee">
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="0..1" />
+          <End Role="tbl_Attedance" Type="Self.tbl_Attedance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Employee">
+              <PropertyRef Name="Emp_Id" />
+            </Principal>
+            <Dependent Role="tbl_Attedance">
+              <PropertyRef Name="Emp_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Attedance_tbl_Taxi">
+          <End Role="tbl_Taxi" Type="Self.tbl_Taxi" Multiplicity="0..1" />
+          <End Role="tbl_Attedance" Type="Self.tbl_Attedance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Taxi">
+              <PropertyRef Name="Taxi_ID" />
+            </Principal>
+            <Dependent Role="tbl_Attedance">
+              <PropertyRef Name="Taxi_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Employee_tbl_Department">
+          <End Role="tbl_Department" Type="Self.tbl_Department" Multiplicity="0..1" />
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Department">
+              <PropertyRef Name="Department_ID" />
+            </Principal>
+            <Dependent Role="tbl_Employee">
+              <PropertyRef Name="Department_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Taxi_Owner_tbl_Driver">
+          <End Role="tbl_Driver" Type="Self.tbl_Driver" Multiplicity="0..1" />
+          <End Role="tbl_Taxi_Owner" Type="Self.tbl_Taxi_Owner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Driver">
+              <PropertyRef Name="Driver_ID" />
+            </Principal>
+            <Dependent Role="tbl_Taxi_Owner">
+              <PropertyRef Name="Driver_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Employee_tbl_System_Account">
+          <End Role="tbl_System_Account" Type="Self.tbl_System_Account" Multiplicity="0..1" />
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_System_Account">
+              <PropertyRef Name="Acc_ID" />
+            </Principal>
+            <Dependent Role="tbl_Employee">
+              <PropertyRef Name="Acc_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_System_Account_tbl_Role">
+          <End Role="tbl_Role" Type="Self.tbl_Role" Multiplicity="0..1" />
+          <End Role="tbl_System_Account" Type="Self.tbl_System_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Role">
+              <PropertyRef Name="Role_ID" />
+            </Principal>
+            <Dependent Role="tbl_System_Account">
+              <PropertyRef Name="Role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Route_tbl_Tariff">
+          <End Role="tbl_Tariff" Type="Self.tbl_Tariff" Multiplicity="0..1" />
+          <End Role="tbl_Route" Type="Self.tbl_Route" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Tariff">
+              <PropertyRef Name="Tariff_Id" />
+            </Principal>
+            <Dependent Role="tbl_Route">
+              <PropertyRef Name="Tariff_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Route_tbl_Zone">
+          <End Role="tbl_Zone" Type="Self.tbl_Zone" Multiplicity="0..1" />
+          <End Role="tbl_Route" Type="Self.tbl_Route" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Zone">
+              <PropertyRef Name="Zone_Id" />
+            </Principal>
+            <Dependent Role="tbl_Route">
+              <PropertyRef Name="Zone_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Taxi_tbl_Taxi_Owner">
+          <End Role="tbl_Taxi_Owner" Type="Self.tbl_Taxi_Owner" Multiplicity="0..1" />
+          <End Role="tbl_Taxi" Type="Self.tbl_Taxi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Taxi_Owner">
+              <PropertyRef Name="Owr_Id" />
+            </Principal>
+            <Dependent Role="tbl_Taxi">
+              <PropertyRef Name="Owr_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Taxi_tbl_Zone1">
+          <End Role="tbl_Zone" Type="Self.tbl_Zone" Multiplicity="0..1" />
+          <End Role="tbl_Taxi" Type="Self.tbl_Taxi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Zone">
+              <PropertyRef Name="Zone_Id" />
+            </Principal>
+            <Dependent Role="tbl_Taxi">
+              <PropertyRef Name="Zone_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="HasComment">
+          <End Role="tbl_Taxi" Type="Self.tbl_Taxi" Multiplicity="0..1" />
+          <End Role="tbl_Taxi_user" Type="Self.tbl_Taxi_user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Taxi">
+              <PropertyRef Name="Taxi_ID" />
+            </Principal>
+            <Dependent Role="tbl_Taxi_user">
+              <PropertyRef Name="Taxi_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AACPTMCSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tbl_Attedance" EntityType="Self.tbl_Attedance" />
+          <EntitySet Name="tbl_Department" EntityType="Self.tbl_Department" />
+          <EntitySet Name="tbl_Driver" EntityType="Self.tbl_Driver" />
+          <EntitySet Name="tbl_Employee" EntityType="Self.tbl_Employee" />
+          <EntitySet Name="tbl_Role" EntityType="Self.tbl_Role" />
+          <EntitySet Name="tbl_Route" EntityType="Self.tbl_Route" />
+          <EntitySet Name="tbl_System_Account" EntityType="Self.tbl_System_Account" />
+          <EntitySet Name="tbl_Tariff" EntityType="Self.tbl_Tariff" />
+          <EntitySet Name="tbl_Taxi" EntityType="Self.tbl_Taxi" />
+          <EntitySet Name="tbl_Taxi_Owner" EntityType="Self.tbl_Taxi_Owner" />
+          <EntitySet Name="tbl_Taxi_user" EntityType="Self.tbl_Taxi_user" />
+          <EntitySet Name="tbl_Zone" EntityType="Self.tbl_Zone" />
+          <AssociationSet Name="FK_tbl_Attedance_tbl_Employee" Association="Self.FK_tbl_Attedance_tbl_Employee">
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+            <End Role="tbl_Attedance" EntitySet="tbl_Attedance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Attedance_tbl_Taxi" Association="Self.FK_tbl_Attedance_tbl_Taxi">
+            <End Role="tbl_Taxi" EntitySet="tbl_Taxi" />
+            <End Role="tbl_Attedance" EntitySet="tbl_Attedance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Employee_tbl_Department" Association="Self.FK_tbl_Employee_tbl_Department">
+            <End Role="tbl_Department" EntitySet="tbl_Department" />
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Taxi_Owner_tbl_Driver" Association="Self.FK_tbl_Taxi_Owner_tbl_Driver">
+            <End Role="tbl_Driver" EntitySet="tbl_Driver" />
+            <End Role="tbl_Taxi_Owner" EntitySet="tbl_Taxi_Owner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Employee_tbl_System_Account" Association="Self.FK_tbl_Employee_tbl_System_Account">
+            <End Role="tbl_System_Account" EntitySet="tbl_System_Account" />
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_System_Account_tbl_Role" Association="Self.FK_tbl_System_Account_tbl_Role">
+            <End Role="tbl_Role" EntitySet="tbl_Role" />
+            <End Role="tbl_System_Account" EntitySet="tbl_System_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Route_tbl_Tariff" Association="Self.FK_tbl_Route_tbl_Tariff">
+            <End Role="tbl_Tariff" EntitySet="tbl_Tariff" />
+            <End Role="tbl_Route" EntitySet="tbl_Route" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Route_tbl_Zone" Association="Self.FK_tbl_Route_tbl_Zone">
+            <End Role="tbl_Zone" EntitySet="tbl_Zone" />
+            <End Role="tbl_Route" EntitySet="tbl_Route" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Taxi_tbl_Taxi_Owner" Association="Self.FK_tbl_Taxi_tbl_Taxi_Owner">
+            <End Role="tbl_Taxi_Owner" EntitySet="tbl_Taxi_Owner" />
+            <End Role="tbl_Taxi" EntitySet="tbl_Taxi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Taxi_tbl_Zone1" Association="Self.FK_tbl_Taxi_tbl_Zone1">
+            <End Role="tbl_Zone" EntitySet="tbl_Zone" />
+            <End Role="tbl_Taxi" EntitySet="tbl_Taxi" />
+          </AssociationSet>
+          <AssociationSet Name="HasComment" Association="Self.HasComment">
+            <End Role="tbl_Taxi" EntitySet="tbl_Taxi" />
+            <End Role="tbl_Taxi_user" EntitySet="tbl_Taxi_user" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AACPTMCSModelStoreContainer" CdmEntityContainer="AACPTMCSEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AACPTMCSModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Attedance">
+            <EntityTypeMapping TypeName="AACPTMCSModel.tbl_Attedance">
+              <MappingFragment StoreEntitySet="tbl_Attedance">
+                <ScalarProperty Name="Att_Id" ColumnName="Att_Id" />
+                <ScalarProperty Name="Att_Value" ColumnName="Att_Value" />
+                <ScalarProperty Name="Att_tkn_Time" ColumnName="Att_tkn_Time" />
+                <ScalarProperty Name="Taxi_ID" ColumnName="Taxi_ID" />
+                <ScalarProperty Name="Emp_Id" ColumnName="Emp_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Department">
+            <EntityTypeMapping TypeName="AACPTMCSModel.tbl_Department">
+              <MappingFragment StoreEntitySet="tbl_Department">
+                <ScalarProperty Name="Department_ID" ColumnName="Department_ID" />
+                <ScalarProperty Name="Department_Name" ColumnName="Department_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Driver">
+            <EntityTypeMapping TypeName="AACPTMCSModel.tbl_Driver">
+              <MappingFragment StoreEntitySet="tbl_Driver">
+                <ScalarProperty Name="Driver_ID" ColumnName="Driver_ID" />
+                <ScalarProperty Name="Driver_First_Name" ColumnName="Driver_First_Name" />
+                <ScalarProperty Name="Driver_Last_Name" ColumnName="Driver_Last_Name" />
+                <ScalarProperty Name="Driver_lisence_No" ColumnName="Driver_lisence_No" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Employee">
+            <EntityTypeMapping TypeName="AACPTMCSModel.tbl_Employee">
+              <MappingFragment StoreEntitySet="tbl_Employee">
+                <ScalarProperty Name="Emp_Id" ColumnName="Emp_Id" />
+                <ScalarProperty Name="Emp_First_Name" ColumnName="Emp_First_Name" />
+                <ScalarProperty Name="Emp_Last_name" ColumnName="Emp_Last_name" />
+                <ScalarProperty Name="Emp_Act_date" ColumnName="Emp_Act_date" />
+                <ScalarProperty Name="Emp_Postion" ColumnName="Emp_Postion" />
+                <ScalarProperty Name="Department_ID" ColumnName="Department_ID" />
+                <ScalarProperty Name="Acc_ID" ColumnName="Acc_ID" />
+                <ScalarProperty Name="Emp_Gender" ColumnName="Emp_Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Role">
+            <EntityTypeMapping TypeName="AACPTMCSModel.tbl_Role">
+              <MappingFragment StoreEntitySet="tbl_Role">
+                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+                <ScalarProperty Name="Role_Description" ColumnName="Role_Description" />
+                <ScalarProperty Name="Role_Permission" ColumnName="Role_Permission" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Route">
+            <EntityTypeMapping TypeName="AACPTMCSModel.tbl_Route">
+              <MappingFragment StoreEntitySet="tbl_Route">
+                <ScalarProperty Name="Route_Id" ColumnName="Route_Id" />
+                <ScalarProperty Name="Route_Name" ColumnName="Route_Name" />
+                <ScalarProperty Name="Route_Description" ColumnName="Route_Description" />
+                <ScalarProperty Name="Route_Start" ColumnName="Route_Start" />
+                <ScalarProperty Name="Route_End" ColumnName="Route_End" />
+                <ScalarProperty Name="Roue_Total_Distance" ColumnName="Roue_Total_Distance" />
+                <ScalarProperty Name="Route_Act_Date" ColumnName="Route_Act_Date" />
+                <ScalarProperty Name="Zone_Id" ColumnName="Zone_Id" />
+                <ScalarProperty Name="Tariff_Id" ColumnName="Tariff_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_System_Account">
+            <EntityTypeMapping TypeName="AACPTMCSModel.tbl_System_Account">
+              <MappingFragment StoreEntitySet="tbl_System_Account">
+                <ScalarProperty Name="Acc_ID" ColumnName="Acc_ID" />
+                <ScalarProperty Name="Acc_User_Name" ColumnName="Acc_User_Name" />
+                <ScalarProperty Name="ACC_Pasword" ColumnName="ACC_Pasword" />
+                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Tariff">
+            <EntityTypeMapping TypeName="AACPTMCSModel.tbl_Tariff">
+              <MappingFragment StoreEntitySet="tbl_Tariff">
+                <ScalarProperty Name="Tariff_Id" ColumnName="Tariff_Id" />
+                <ScalarProperty Name="Tariff_Amount" ColumnName="Tariff_Amount" />
+                <ScalarProperty Name="Tariff_Update_Date" ColumnName="Tariff_Update_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Taxi">
+            <EntityTypeMapping TypeName="AACPTMCSModel.tbl_Taxi">
+              <MappingFragment StoreEntitySet="tbl_Taxi">
+                <ScalarProperty Name="Taxi_ID" ColumnName="Taxi_ID" />
+                <ScalarProperty Name="Taxi_Code" ColumnName="Taxi_Code" />
+                <ScalarProperty Name="Taxi_Manf_Year" ColumnName="Taxi_Manf_Year" />
+                <ScalarProperty Name="Taxi_Model" ColumnName="Taxi_Model" />
+                <ScalarProperty Name="Taxi_Licence_No" ColumnName="Taxi_Licence_No" />
+                <ScalarProperty Name="Zone_Id" ColumnName="Zone_Id" />
+                <ScalarProperty Name="Owr_Id" ColumnName="Owr_Id" />
+                <ScalarProperty Name="Driver_ID" ColumnName="Driver_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Taxi_Owner">
+            <EntityTypeMapping TypeName="AACPTMCSModel.tbl_Taxi_Owner">
+              <MappingFragment StoreEntitySet="tbl_Taxi_Owner">
+                <ScalarProperty Name="Owr_Id" ColumnName="Owr_Id" />
+                <ScalarProperty Name="Owr_First_Name" ColumnName="Owr_First_Name" />
+                <ScalarProperty Name="Owr_Last_name" ColumnName="Owr_Last_name" />
+                <ScalarProperty Name="Owr_Reg_city" ColumnName="Owr_Reg_city" />
+                <ScalarProperty Name="Owr_Reg_date" ColumnName="Owr_Reg_date" />
+                <ScalarProperty Name="Owr_Gender" ColumnName="Owr_Gender" />
+                <ScalarProperty Name="Owr_Subcity" ColumnName="Owr_Subcity" />
+                <ScalarProperty Name="Owr_Wereda" ColumnName="Owr_Wereda" />
+                <ScalarProperty Name="Owr_House_NO" ColumnName="Owr_House_NO" />
+                <ScalarProperty Name="Owr_PIN" ColumnName="Owr_PIN" />
+                <ScalarProperty Name="Driver_ID" ColumnName="Driver_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Taxi_user">
+            <EntityTypeMapping TypeName="AACPTMCSModel.tbl_Taxi_user">
+              <MappingFragment StoreEntitySet="tbl_Taxi_user">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Commnet" ColumnName="Commnet" />
+                <ScalarProperty Name="Taxi_ID" ColumnName="Taxi_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Zone">
+            <EntityTypeMapping TypeName="AACPTMCSModel.tbl_Zone">
+              <MappingFragment StoreEntitySet="tbl_Zone">
+                <ScalarProperty Name="Zone_Id" ColumnName="Zone_Id" />
+                <ScalarProperty Name="Zone_Name" ColumnName="Zone_Name" />
+                <ScalarProperty Name="Zone_Description" ColumnName="Zone_Description" />
+                <ScalarProperty Name="Zone_Act_Date" ColumnName="Zone_Act_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,33 @@
+﻿
+
+@{
+    ViewBag.Title = "Welcome";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+<link href="~/Content/welcome.css" rel="stylesheet" />
+
+
+<table border="1" style=" background-image:url(../../App_Data/Taxi_Addis_Abeba.jpg)">
+    <tr>
+        <td>
+            <div style="position:center; background-color: lightblue; height: 200px; width: 100%; background-image:url(../../App_Data/Taxi_Addis_Abeba.jpg)">
+
+                <h1>
+
+                    Welcome to Addis Ababa City Administraion Public Taxi Monering and control System
+                </h1>
+
+               
+
+            </div>
+        </td>
+       
+    </tr>
+        <tr style=" align-items:center">
+        <td><button onclick=""> <h2>@Html.ActionLink("Login", "Login", "Account", new { area = "" }, new { @class = "navbar-brand" })</h2></button></td></tr>
+
+   <tr><td><img src="~/App_Data/"Taxi_Addis_Abeba.jpg" style="height:50px;width:100px;" /></td></tr> 
+   
+    
+</table>
